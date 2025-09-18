@@ -17,12 +17,11 @@ Date: 19th sep, 2025.
 
 #include<stdio.h>
 #include<sys/resource.h>
-
 int main(){
     struct rlimit limit;
 
     getrlimit(RLIMIT_STACK, &limit);
-    printf("Before : soft limit= %ld , hard limit = %ld\n", 
+    printf("Before : soft limit= %ld , hard limit = %ld\n",
     (long)limit.rlim_cur, (long)limit.rlim_max);
 
     limit.rlim_cur = 5 * 1024 * 1024;
