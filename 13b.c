@@ -2,7 +2,7 @@
 
 ============================================================================
 
-Name : 9.c
+Name : 13b.c
 
 Author : Prins Mishra
 
@@ -17,25 +17,24 @@ Date: 30th sep, 2025.
 ============================================================================
 
 */ 
-#include<stdio.h>
-#include<signal.h>
-#include<stdlib.h>
- 
-void signalhandler(int signalid) {
-    printf("Caught SIGPFE %d\n", signalid);
-    exit(1);
-     
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
 
-int main() {
-    signal(SIGFPE, signalhandler);  
+int main(int argc, char *argv[]){
 
-     
-    int a = 5;
-    int b  = 0;
-    int c = a/b;
+    if(argc < 2){
+        printf("not getting pid");
+    }
+  
+     pid_t pid = atoi(argv[1]);
+
+    printf("sending the signstop to process %d\n", pid);
+
+    kill(pid, SIGSTOP);
 
     return 0;
-}
 
-//Caught SIGPFE 8
+}
+/*sending the signstop to process 10094*/

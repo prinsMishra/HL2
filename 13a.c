@@ -2,7 +2,7 @@
 
 ============================================================================
 
-Name : 9.c
+Name : 13a.c
 
 Author : Prins Mishra
 
@@ -17,25 +17,25 @@ Date: 30th sep, 2025.
 ============================================================================
 
 */ 
-#include<stdio.h>
-#include<signal.h>
-#include<stdlib.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
  
-void signalhandler(int signalid) {
-    printf("Caught SIGPFE %d\n", signalid);
-    exit(1);
-     
+void signalhandler(int signalno){
+    printf("cought signal %d\n", signalno);
 }
+int main(){
+    signal(SIGSTOP, signalhandler);
 
-int main() {
-    signal(SIGFPE, signalhandler);  
+    printf("this program will wait for signstop %d\n", getpid());
 
-     
-    int a = 5;
-    int b  = 0;
-    int c = a/b;
+    while(1){
 
-    return 0;
+    }
 }
+/*this program will wait for signstop 10094
 
-//Caught SIGPFE 8
+
+[1]+  Stopped                 ./a.out*/
