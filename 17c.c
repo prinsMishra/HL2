@@ -34,7 +34,7 @@ int main() {
         fcntl(fd[0], F_DUPFD, 0);
         close(fd[0]);
         execlp("wc", "wc", NULL);
-        
+         
     } 
     else {
         close(fd[0]);
